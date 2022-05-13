@@ -10,7 +10,11 @@ function cargarEventos() {
     document.addEventListener('DOMContentLoaded', compra.leerLocalStorageCompra());
 
     //Eliminar productos del carrito
-    carrito.addEventListener('click', (e) => { compra.eliminarProducto(e) });
+   
+    carrito.addEventListener('click', (e) => { 
+
+        compra.eliminarProducto(e) 
+    });
 
     compra.calcularTotal();
 

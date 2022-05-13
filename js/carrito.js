@@ -32,7 +32,9 @@ class Carrito {
         productosLS = this.obtenerProductosLocalStorage();
         productosLS.forEach(function (productoLS){
             if(productoLS.id === infoProducto.id){
-                productosLS = productoLS.id;
+
+                //SUGAR SYNTAX
+                productosLS += productoLS.id;
             }
         });
         
@@ -63,8 +65,9 @@ class Carrito {
         `;
         listaProductos.appendChild(row);
         this.guardarProductosLocalStorage(producto);
-
     }
+
+    
 
     //Eliminar el producto del carrito en el DOM
     
@@ -76,10 +79,11 @@ class Carrito {
             producto = e.target.parentElement.parentElement;
             productoID = producto.querySelector('a').getAttribute('data-id');
         }
-        this.eliminarProductoLocalStorage(productoID);
+        
         this.calcularTotal();
-
     }
+
+   
 
     //Elimina todos los productos
     limpiarCarrito(e){
@@ -92,6 +96,7 @@ class Carrito {
         return false;
     }
 
+   
     //Almacenar en el LS
     guardarProductosLocalStorage(producto){
         let productos;
@@ -107,14 +112,17 @@ class Carrito {
     obtenerProductosLocalStorage(){
         let productoLS;
 
-        //Comprobar si hay elementos en el local storage
-        if(localStorage.getItem('productos') === null){
-            productoLS = [];
-        }
-        else {
-            productoLS = JSON.parse(localStorage.getItem('productos'));
-        }
+   
+        //OPERADOR TERNARIO
+
+        (localStorage.getItem('productos') === null) ? productoLS = []: productoLS = JSON.parse(localStorage.getItem('productos')); 
+
+        
+        //SPREAD DE ARRAYS
+        console.log(...productoLS);
+
         return productoLS;
+
     }
 
     //Mostrar los productos guardados en el LS
@@ -174,3 +182,4 @@ class Carrito {
 
        
 }
+
