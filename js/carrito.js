@@ -186,6 +186,8 @@ class Carrito {
        
 }
 
+//METODO PARA BUSCAR PRODUCTOS
+
 document.addEventListener('keyup', (e) => {
     if(e.target.matches('.filter')){
 
