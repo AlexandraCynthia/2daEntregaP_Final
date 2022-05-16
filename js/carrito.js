@@ -33,17 +33,20 @@ class Carrito {
         productosLS.forEach(function (productoLS){
             if(productoLS.id === infoProducto.id){
 
-                //SUGAR SYNTAX
-                productosLS += productoLS.id;
+             
+                productosLS = productoLS.id;
             }
         });
         
-
         if(productosLS === infoProducto.id){
         }
         else {
             this.insertarCarrito(infoProducto);
         }
+
+        // if(productosLS ==! infoProducto.id){
+        //     this.insertarCarrito(infoProducto);
+        // }
         
     }
 
@@ -115,7 +118,7 @@ class Carrito {
    
         //OPERADOR TERNARIO
 
-        (localStorage.getItem('productos') === null) ? productoLS = []: productoLS = JSON.parse(localStorage.getItem('productos')); 
+        (localStorage.getItem('productos') === null) ? (productoLS = []) : (productoLS = JSON.parse(localStorage.getItem('productos'))); 
 
         
         //SPREAD DE ARRAYS
@@ -183,3 +186,23 @@ class Carrito {
        
 }
 
+document.addEventListener('keyup', (e) => {
+    if(e.target.matches('.filter')){
+
+        document.querySelectorAll('.card').forEach(card => {
+            // if(card.innerHTML.toLowerCase().includes(e.target.value)){
+            //     card.classList.remove('hidden')
+            // }else{
+            //     card.classList.add('hidden')
+            // }
+
+
+            // Operador ternario
+            (card.innerHTML.toLowerCase().includes(e.target.value)) ? card.classList.remove('hidden') : card.classList.add('hidden')
+
+
+
+        })
+
+    }
+})
